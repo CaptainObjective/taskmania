@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
 
 const { validateTodo } = require('../models/todo');
 
@@ -11,10 +12,18 @@ router.post('/', async (req, res) => {
   const { error, value } = validateTodo(req.body);
   if (error) return res.status(400).json({ error });
 
-  const todos = req.user.todos;
-  todos.push(value);
+  const [todo] = req.user.todos.addToSet(value);
   await req.user.save();
-  res.status(201).json(todos);
+  res.status(201).json(todo);
+});
+
+router.delete('/:id', async (req, res) => {
+  const id = req.params.id;
+  console.log('🚀 ~ file: todo.js ~ line 21 ~ router.delete ~ id', id);
+
+  const [todo] = req.user.todos.remove({ _id: id });
+  await req.user.save();
+  res.status(201).json(todo);
 });
 
 module.exports = router;
