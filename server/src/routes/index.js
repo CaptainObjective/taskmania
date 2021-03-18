@@ -5,6 +5,6 @@ const auth = require('./auth');
 const todo = require('./todo');
 
 router.use('/auth', auth);
-router.use('/api/todo', authMiddleware, todo);
+router.use('/api/todos', authMiddleware, todo);
 
 module.exports = router;

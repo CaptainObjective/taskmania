@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const router = require('./routes');
-
 (async () => {
   try {
     await mongoose.connect(process.env.DB_URL, {
