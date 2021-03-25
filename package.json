@@ -1,0 +1,13 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "(cd server && npm install --dev) & (cd client && npm install --dev)",
+    "heroku-postbuild": "cd client && npm run build",
+    "start": "cd server && npm run start:prod"
+  },
+  "author": "",
+  "license": "ISC"
+}

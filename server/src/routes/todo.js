@@ -1,7 +1,6 @@
 const router = require('express').Router();
 
 const { validateTodo } = require('../models/todo');
-const { User } = require('../models/user');
 
 router.get('/', async (req, res) => {
   const todos = req.user.todos;
