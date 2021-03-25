@@ -11,7 +11,7 @@ const authMiddleware = async (req, res, next) => {
     const { id } = jwt.verify(token, jwtKey);
 
     const user = await User.findById(id);
-    if (!user) return res.json({ error: 'This user does not exist' });
+    if (!user) return res.status(401).json({ error: 'This user does not exist' });
 
     req.user = user;
     next();

@@ -20,9 +20,9 @@ router.post('/register', async (req, res) => {
   user = new User(value);
   await user.save();
 
-  const token = jwt.sign({ id: user._id }, jwtKey);
+  const token = jwt.sign({ id: user._id }, jwtKey, { expiresIn: 60 * 60 * 24 });
 
-  res.header('Authorization', token).json({ user });
+  res.header('Authorization', token).json({ user: { email: user.email } });
 });
 
 router.post('/login', async (req, res) => {
@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
 
   const token = jwt.sign({ id: user._id }, jwtKey, { expiresIn: 60 * 60 * 24 });
 
-  res.header('Authorization', token).json({ user });
+  res.header('Authorization', token).json({ user: { email: user.email } });
 });
 
 module.exports = router;

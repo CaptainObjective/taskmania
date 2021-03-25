@@ -26,7 +26,7 @@ export default function Header({ handleLogout }) {
 
   const handleButtonClick = () => {
     axios.defaults.headers.common['Authorization'] = '';
-    window.localStorage.setItem('token', null);
+    window.localStorage.removeItem('token');
 
     handleLogout();
   };

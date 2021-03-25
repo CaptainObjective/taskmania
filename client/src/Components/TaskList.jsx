@@ -39,11 +39,17 @@ export default function TaskList() {
     setTasks(tasks.filter(task => task._id !== id));
   };
 
+  const updateTask = (id, newTask) => {
+    const taskIndex = tasks.findIndex(task => task._id === id);
+    tasks[taskIndex] = newTask;
+    setTasks([...tasks]);
+  };
+
   return (
     <div className={classes.root}>
       <List component="nav">
         {tasks.map(task => (
-          <Task key={task._id} {...task} removeTask={removeTask} />
+          <Task key={task._id} {...task} removeTask={removeTask} updateTask={updateTask} />
         ))}
       </List>
       <NewTask addTask={addTask} />

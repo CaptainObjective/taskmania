@@ -8,7 +8,7 @@ const todoSchema = mongoose.Schema({
 });
 
 const schema = Joi.object({
-  title: Joi.string().min(3).max(20).required(),
+  title: Joi.string().min(1).max(20).required(),
   description: Joi.string().default(''),
   isDone: Joi.boolean().default(false),
 });
