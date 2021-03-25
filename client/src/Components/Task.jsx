@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IconButton, ListItem, ListItemIcon, ListItemText, TextField } from '@material-ui/core';
+import { IconButton, ListItem, ListItemIcon, TextField } from '@material-ui/core';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CheckIcon from '@material-ui/icons/Check';
